@@ -1,25 +1,18 @@
 import { useState } from "react"
-import Button from "./Components/Button.jsx"
-import Count from "./Components/Paragraph.jsx"
+import FAQs from "./Components/FAQs.jsx"
+import Title from "./Components/Title.jsx"
 import "./index.css"
+import { quiz } from "./data/QAnswers.js"
 function App() {
-  const [count ,setCount] = useState(0)
-  //
-  function increment(){
-    console.log("increment")
-    setCount(pre=>pre + 1)
-  }
-  //
-  function dicrement(){
-    console.log("dicrement")
-    setCount(pre=>pre - 1)
-  }
-  return (<div>
-    {/* <p>hello world</p> */}
-    <Count count={count}/>
-    <Button count={count} text={"increment"} onclick={increment}/>
-    <Button count={count} text={"dicrement"} onclick={dicrement}/>    
-  </div>
+  // const dat = html()
+  const faqsitems = quiz.map((item,index)=>(
+    <FAQs key={item.id} Qeustion={item.question}  Answer={item.answer}/>     
+  ))
+  return (
+    <div className="p-[10px]">
+      <Title text={"FAQ’s"}/>
+      {faqsitems}
+    </div>
   )
 }
 
